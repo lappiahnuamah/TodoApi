@@ -1,0 +1,125 @@
+
+a.floating-button{
+  text-decoration: none;
+}
+.floating-button {
+  width: 60px;
+  height: 60px;
+  background-color: #0C9;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+}
+
+.floating-button:hover {
+  background-color: #09F;
+}
+
+.floating-button-icon{
+  text-align: center;
+  text-decoration: none;
+  font-style: none;
+  margin-top:5px ;
+  font-size:xx-large;
+}
+
+.app-title{
+  background: black;
+  border: 1px solid black;
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  color:#fff;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 5%;
+  margin-bottom: 15%;
+  
+}
+.todo{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.todo-title{
+  background-color: #000;
+  color: #fff;
+  padding-left: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-bottom: 4%;
+  margin-top: 5%;
+  border-radius: 5%;
+}
+.todo-body{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid black;
+  
+}
+.todo-content{
+  margin-right: 5%;
+}
+.todo-option {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+padding: 12px 16px;
+z-index: 1;
+}
+
+.todo-option:hover .dropdown-content {
+display: flex;
+flex-direction: column;
+}
+
+.dropdown-content > a{
+text-decoration: none;
+display: flex;
+width: 50%;
+justify-self: center;
+}
+.dropdown-content > a:hover{
+color:#fff;
+background:#000;
+}
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}

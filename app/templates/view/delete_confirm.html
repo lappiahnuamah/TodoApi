@@ -1,0 +1,11 @@
+{% extends 'view/base.html' %}
+
+{% block content %}
+  <h2>Delete Task</h2>
+  <p>Are you sure you want to delete "{{ todo.title }}"?</p>
+  <form method="POST">
+    {% csrf_token %}
+    <input value="Yes" style="background-color: red;" type="submit"/>
+  </form>
+  <a class='btn btn-primary' href="{% url 'todo_list' %}">No, Go Back</a>
+{% endblock %}

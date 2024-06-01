@@ -1,0 +1,6 @@
+Django==3.2.18
+djangorestframework
+django-filter
+django-cors-headers
+markdown
+psycopg2-binary

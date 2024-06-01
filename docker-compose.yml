@@ -1,0 +1,29 @@
+services:
+  web:
+    # image: lappiahnuamah/devops-1:v1
+    build: .
+    ports:
+      - "8000:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - my-postgres
+    networks:
+      - mynet
+   
+  my-postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_PASSWORD=postgres"
+    networks:
+      - mynet
+   
+
+volumes:
+  postgres_data:
+
+
+networks:
+  mynet:
+    driver: bridge

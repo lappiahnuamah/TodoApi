@@ -1,0 +1,6 @@
+projectKey=midnighttrials
+serverUrl=http://localhost:9000
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9000/dashboard?id=midnighttrials
+ceTaskId=813f08db-1436-4a61-b4ff-72ed7321e656
+ceTaskUrl=http://localhost:9000/api/ce/task?id=813f08db-1436-4a61-b4ff-72ed7321e656
