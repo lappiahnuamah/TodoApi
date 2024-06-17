@@ -21,7 +21,7 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/devops-1:latest .
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/devops-1 .
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/devops-1:latest
    
 
@@ -30,7 +30,7 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
+        aws-region: us-east-2
 
   
     - name: Configure SHS
