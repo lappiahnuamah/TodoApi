@@ -90,15 +90,16 @@ WSGI_APPLICATION = 'DevOps.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        # 'NAME': 'test_db',
-        'USER': 'postgres',
-        # 'PASSWORD': 'admin',
-        'PASSWORD': 'postgres',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'NAME': 'postgres',
+        # # 'NAME': 'test_db',
+        # 'USER': 'postgres',
+        # # 'PASSWORD': 'admin',
+        # 'PASSWORD': 'postgres',
+        # # 'HOST': 'my-postgres',
         # 'HOST': 'my-postgres',
-        'HOST': 'my-postgres',
-        'PORT': '5432',
+        # 'PORT': '5432',
     }
 }
 
