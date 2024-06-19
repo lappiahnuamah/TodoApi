@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-h(ay&o7@psxf6#0!h8wrq*rdenaw!xoqvmvug=1zpbr@ema@-r
 DEBUG = True
 
 # ALLOWED_HOSTS = ['*.auroraverusschool.org', 'trial.abc.auroraverusschool.org']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["http://52.91.6.114:8000/"]
 
 
 # Application definition
@@ -62,7 +62,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "http://127.0.0.1:8080",
-    "http://52.91.6.114:8000/",
 ]
 
 ROOT_URLCONF = 'DevOps.urls'
