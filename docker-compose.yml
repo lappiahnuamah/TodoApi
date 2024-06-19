@@ -16,10 +16,10 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      # - "POSTGRES_PASSWORD=postgres"
-      POSTGRES_DB: paperless
-      POSTGRES_USER: paperless
-      POSTGRES_PASSWORD: paperless
+      - "POSTGRES_PASSWORD=postgres"
+      # POSTGRES_DB: paperless
+      # POSTGRES_USER: paperless
+      # POSTGRES_PASSWORD: paperless
     networks:
       - mynet
    

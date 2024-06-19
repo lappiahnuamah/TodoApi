@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-h(ay&o7@psxf6#0!h8wrq*rdenaw!xoqvmvug=1zpbr@ema@-r
 DEBUG = True
 
 # ALLOWED_HOSTS = ['*.auroraverusschool.org', 'trial.abc.auroraverusschool.org']
-ALLOWED_HOSTS = ["http://52.91.6.114:8000/"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
