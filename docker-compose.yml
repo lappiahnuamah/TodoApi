@@ -8,8 +8,6 @@ services:
     # command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - my-postgres
-    networks:
-      - mynet
    
   my-postgres:
     image: postgres
@@ -20,14 +18,7 @@ services:
       # POSTGRES_DB: paperless
       # POSTGRES_USER: paperless
       # POSTGRES_PASSWORD: paperless
-    networks:
-      - mynet
    
 
 volumes:
   postgres_data:
-
-
-networks:
-  mynet:
-    driver: bridge
