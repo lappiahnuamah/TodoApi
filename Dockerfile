@@ -26,7 +26,7 @@ WORKDIR /app
 # PYTHONDONTWRITEBYTECODE is an environment variable used by Python. When set to a non-empty value (in this case, 1), it prevents Python from writing ".pyc files" (bytecode) to disk. Bytecode files are compiled Python files, and setting this variable to 1 avoids creating them. This can be useful in certain scenarios, such as containerized or production environments, where writing bytecode files might not be desired.
 # PYTHONUNBUFFERED is another environment variable related to Python. When set to a non-empty value (in this case, 1), it forces Python to run in unbuffered mode. In unbuffered mode, Python doesn't buffer the output, which means that each line is printed as soon as it is generated. This can be beneficial in containerized environments or when running Python in a script, ensuring that the output is immediately visible.
 # ENV PYTHONDONTWRITEBYTECODE 1
-# ENV PYTHONNUNBUFFERED 1
+ENV PYTHONNUNBUFFERED 1
 # ENV PIP_DISABLE_PIP_VERSION_CHECK 1
 
 # Create and activate virtual environment
