@@ -49,6 +49,7 @@ jobs:
           curl -fsSL https://get.docker.com -o get-docker.sh
           sh get-docker.sh
           sudo usermod -aG docker ${{ secrets.EC2_USERNAME }}
+          newgrp docker
 
     - name: Deploy to EC2 instance
       uses: appleboy/ssh-action@master

@@ -91,13 +91,13 @@ WSGI_APPLICATION = 'DevOps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'postgres',
-        'NAME': 'test_db',
+        'NAME': 'postgres',
+        # 'NAME': 'test_db',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
-        # 'PASSWORD': 'postgres',
+        # 'PASSWORD': 'admin',
+        'PASSWORD': 'postgres',
         # 'HOST': 'my-postgres',
-        'HOST': 'localhost',
+        'HOST': 'my-postgres',
         'PORT': '5432',
     }
 }

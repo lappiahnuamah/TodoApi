@@ -1,10 +1,11 @@
 services:
   web:
-    # image: lappiahnuamah/devops-1:v1
+    image: lappiahnuamah/devops-1:v1
     build: .
     ports:
+
       - "8000:8000"
-    command: python manage.py runserver 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - my-postgres
     networks:
