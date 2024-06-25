@@ -1,4 +1,4 @@
-name: Deploy TodoApi using Github Actions
+name: Deploy TodoApi to EC2 using AWS CodeDeploy
 
 on:
   push:
@@ -23,42 +23,15 @@ jobs:
       run: |
         docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/lappiahnuamah/devops-1 .
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/lappiahnuamah/devops-1:latest
-   
-
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
-  
-    - name: Configure SSH
-      uses: webfactory/ssh-agent@v0.7.0
-      with:
-        ssh-private-key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
 
 
-    - name: Install Docker on EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_PUBLIC_IP }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-        script: |
-          curl -fsSL https://get.docker.com -o get-docker.sh
-          sh get-docker.sh
-          sudo usermod -aG docker ${{ secrets.EC2_USERNAME }}
-          newgrp docker
-
-    - name: Deploy to EC2 instance
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_PUBLIC_IP }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-        script: |
-          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
-          docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/lappiahnuamah/devops-1:latest
-          docker stop devops-1 || true
-          docker rm devops-1 || true
-          docker run -d --name devops-1 -p 8000:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/lappiahnuamah/devops-1:latest
+    - name: Deploy to AWS CodeDeploy
+      run: |
+        aws deploy create-deployment \
+          --application-name rtodo \
+          --deployment-group-name rtodo-deployment-group \
+          --github-location repository=${{ github.repository }}, commitId=${{ github.sha }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: us-east-2
