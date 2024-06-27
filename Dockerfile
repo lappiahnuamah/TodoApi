@@ -43,6 +43,8 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
 COPY ./nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY ./scripts/certbot-auto /usr/local/bin/certbot-auto
+RUN chmod +x /usr/local/bin/certbot-auto
 
 # RUN python manage.py makemigrations
 

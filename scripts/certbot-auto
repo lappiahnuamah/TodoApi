@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Install dependencies
+sudo apt-get update
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install -y certbot
+
+# Download Certbot
+wget https://dl.eff.org/certbot-auto
+chmod +x scripts/certbot-auto
+sudo mv certbot-auto /usr/local/bin/certbot-auto
+
+# Run Certbot to obtain a certificate
+/usr/local/bin/certbot-auto certonly --standalone --non-interactive --agree-tos --email lappiahnuamahfbc1999@gmail.com -d lawtrial.auroraverusschool.org
