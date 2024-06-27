@@ -2,29 +2,40 @@ version: '3.8'
 
 services:
   web:
-    image: lappiahnuamah/devops-1:v1
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
       - .:/app
     tty: true
+    networks:
+      - webnet
 
   nginx:
-    image: nginx
+    image: nginx:latest
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx:/etc/nginx/conf.d/
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - web
+    networks:
+      - webnet
 
   certbot:
     image: certbot/certbot
+    container_name: certbot
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     command: certonly --webroot --webroot-path=/var/www/certbot -d lawtest.auroraverusschool.org
     depends_on:
       - nginx
+
+networks:
+  webnet:

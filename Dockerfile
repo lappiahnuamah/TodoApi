@@ -42,6 +42,7 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 COPY . .
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/nginx.conf
 
 # RUN python manage.py makemigrations
 
