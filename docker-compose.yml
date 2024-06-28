@@ -14,9 +14,11 @@ services:
       - webnet
 
   nginx:
-    image: nginx:latest
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
     volumes:
-      - ./nginx:/etc/nginx/conf.d/
+      - ./nginx:/etc/nginx/conf.d
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     ports:
@@ -34,7 +36,8 @@ services:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
     # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot certonly --standalone --email ryk@example.com --agree-tos --no-eff-email -d lawtrial.auroraverusschool.org --non-interactive; sleep 12h & wait $${!}; done;'"
+    # entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot certonly --standalone --email ryk@example.com --agree-tos --no-eff-email -d lawtrial.auroraverusschool.org --non-interactive; sleep 12h & wait $${!}; done;'"
+    # entrypoint: "/bin/sh -c 'trap exit TERM; while:; do certbot renew; sleep 12h & wait $${!}; done;"
     networks:
       - webnet
     depends_on:
@@ -42,3 +45,7 @@ services:
 
 networks:
   webnet:
+
+volumes:
+  certbot-etc:
+  certbot-var:
